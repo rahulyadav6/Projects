@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 3000;
+const cors = require('cors');
 
 const { Todo } = require("./db");
 
 
 app.use(express.json());
-
+app.use(cors());
 app.get("/todos", async(req,res)=>{
     try {
         const todos = await Todo.find({});
